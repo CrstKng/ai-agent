@@ -3,10 +3,13 @@ from dotenv import load_dotenv
 from google import genai
 from google.genai import types
 import sys
+from prompts import system_prompt
 
 def main():
     load_dotenv()
     api_key = os.environ.get("GEMINI_API_KEY")
+    if api_key is None:
+        raise RuntimeError("An API is not provided")
     client = genai.Client(api_key=api_key)
     
     try: 
@@ -17,6 +20,7 @@ def main():
         response = client.models.generate_content(
             model = 'gemini-2.0-flash-001',
             contents = messages,
+            config = types.GenerateContentConfig(system_instruction=system_prompt),
         )
     except IndexError:
         print("you need to provide a prompt")
