@@ -3,7 +3,7 @@ from google import genai
 from google.genai import types
 
 
-def get_files_info(working_directory, directory):
+def get_files_info(working_directory, directory='.'):
     actual_dir = os.path.join(working_directory, directory) #why do I need this fix???
     abs_directory = os.path.abspath(actual_dir) 
     abs_working_directory = os.path.abspath(working_directory)
