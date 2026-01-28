@@ -30,8 +30,8 @@ def write_file(working_directory, file_path, content):
                 f'Successfully wrote to "{file_path}" ({len(content)} characters written)'
             ) 
 
-schema_write_files = types.FunctionDeclaration(
-    name="write_files",
+schema_write_file = types.FunctionDeclaration(
+    name="write_file",
     description="Writes specified content to a specified file path relative to the working directory, either changing the content of an existing file or creating a new file altogether and writing the content provided in it",
     parameters=types.Schema(
         type=types.Type.OBJECT,
